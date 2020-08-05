@@ -15,11 +15,22 @@ import reactor.core.publisher.Mono;
 public class GreetingHandler {
 
     public Mono<ServerResponse> hello(ServerRequest request) {
+
+        Long start = request.queryParam("start")
+                .map(Long::valueOf)
+                .orElse(0L);
+        Long count = request.queryParam("count")
+                .map(Long::valueOf)
+                .orElse(3L);
+
         Flux<Message> messageFlux = Flux.just("Hello, reactive", "Second one", "3 post", "4 post", "5 post")
+                .skip(start)
+                .take(count)
                 .map(Message::new);
+
         return ServerResponse.ok()
                 .contentType(MediaType.APPLICATION_JSON)
-                .body(messageFlux, Message.class );
+                .body(messageFlux, Message.class);
     }
 
     public Mono<ServerResponse> main(ServerRequest request) {
