@@ -17,4 +17,14 @@ public class GreetingHandler {
                 .contentType(MediaType.APPLICATION_JSON)
                 .body(BodyInserters.fromValue("Hello, Aneirine"));
     }
+
+    public Mono<ServerResponse> main(ServerRequest request) {
+        String name = request.queryParam("name").orElse("Nobody");
+        BodyInserter<String, ReactiveHttpOutputMessage> body = BodyInserters.fromValue("Hi, " + name + "!");
+        return ServerResponse
+                .ok()
+                .contentType(MediaType.APPLICATION_JSON)
+                .body(body);
+
+    }
 }
