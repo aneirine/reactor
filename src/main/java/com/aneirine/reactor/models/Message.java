@@ -1,18 +1,16 @@
 package com.aneirine.reactor.models;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
+import org.springframework.data.annotation.Id;
 
-@Getter
-@Setter
-@AllArgsConstructor
+@Data
 @NoArgsConstructor
 public class Message {
 
+    @Id
+    private long id;
     private String data;
-
 
 
 }
