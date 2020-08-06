@@ -1,4 +1,4 @@
-package com.aneirine.reactor.config;
+package com.aneirine.reactor.greeting;
 
 import com.aneirine.reactor.handler.GreetingHandler;
 import org.springframework.context.annotation.Bean;

@@ -1,4 +1,4 @@
-package com.aneirine.reactor.handler;
+package com.aneirine.reactor.greeting;
 
 import com.aneirine.reactor.models.Message;
 import org.springframework.http.MediaType;
@@ -23,7 +23,7 @@ public class GreetingHandler {
                 .map(Long::valueOf)
                 .orElse(3L);
 
-        Flux<Message> messageFlux = Flux.just("Hello, reactive", "Second one", "3 post", "4 post", "5 post")
+        Flux<Message> messageFlux = (Flux<Message>) Flux.just("Hello, reactive", "Second one", "3 post", "4 post", "5 post")
                 .skip(start)
                 .take(count)
                 .map(Message::new);
