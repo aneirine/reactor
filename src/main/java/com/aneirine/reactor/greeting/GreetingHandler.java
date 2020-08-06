@@ -23,14 +23,10 @@ public class GreetingHandler {
                 .map(Long::valueOf)
                 .orElse(3L);
 
-        Flux<Message> messageFlux = (Flux<Message>) Flux.just("Hello, reactive", "Second one", "3 post", "4 post", "5 post")
-                .skip(start)
-                .take(count)
-                .map(Message::new);
 
         return ServerResponse.ok()
                 .contentType(MediaType.APPLICATION_JSON)
-                .body(messageFlux, Message.class);
+                .body(BodyInserters.fromValue("asd"), Message.class);
     }
 
     public Mono<ServerResponse> main(ServerRequest request) {
