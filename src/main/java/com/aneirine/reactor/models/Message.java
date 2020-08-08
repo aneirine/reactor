@@ -1,4 +1,4 @@
-package com.aneirine.reactor;
+package com.aneirine.reactor.models;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -11,4 +11,8 @@ public class Message {
     @Id
     private Long id;
     private String data;
+
+    public Message(String data) {
+        this.data = data;
+    }
 }
