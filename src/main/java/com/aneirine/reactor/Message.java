@@ -1,6 +1,7 @@
 package com.aneirine.reactor;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 
 @Data
