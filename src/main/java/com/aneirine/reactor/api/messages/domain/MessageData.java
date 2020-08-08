@@ -1,4 +1,4 @@
-package com.aneirine.reactor.models.data;
+package com.aneirine.reactor.api.messages.domain;
 
 import lombok.Data;
 

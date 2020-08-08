@@ -1,8 +1,7 @@
-package com.aneirine.reactor.controllers;
+package com.aneirine.reactor.api.messages;
 
-import com.aneirine.reactor.models.Message;
-import com.aneirine.reactor.models.data.MessageData;
-import com.aneirine.reactor.services.MessageService;
+import com.aneirine.reactor.entities.Message;
+import com.aneirine.reactor.api.messages.domain.MessageData;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;

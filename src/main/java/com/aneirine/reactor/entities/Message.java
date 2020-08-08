@@ -1,4 +1,4 @@
-package com.aneirine.reactor.models;
+package com.aneirine.reactor.entities;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;

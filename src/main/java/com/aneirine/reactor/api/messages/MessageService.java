@@ -1,8 +1,7 @@
-package com.aneirine.reactor.services;
+package com.aneirine.reactor.api.messages;
 
-import com.aneirine.reactor.models.Message;
-import com.aneirine.reactor.models.data.MessageData;
-import com.aneirine.reactor.repo.MessageRepository;
+import com.aneirine.reactor.api.messages.domain.MessageData;
+import com.aneirine.reactor.entities.Message;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -16,11 +15,11 @@ public class MessageService {
         this.messageRepository = messageRepository;
     }
 
-    public Flux<Message> getAllMessages(){
+    public Flux<Message> getAllMessages() {
         return messageRepository.findAll();
     }
 
-    public Mono<Message> createMessage(MessageData messageData){
+    public Mono<Message> createMessage(MessageData messageData) {
         return messageRepository.save(new Message(messageData.getData()));
     }
 }
