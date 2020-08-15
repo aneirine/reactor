@@ -2,6 +2,8 @@ package com.aneirine.reactor.api.messages;
 
 import com.aneirine.reactor.entities.Message;
 import com.aneirine.reactor.api.messages.domain.MessageData;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -18,12 +20,19 @@ public class MessageController {
 
     @GetMapping
     public Flux<Message> getAllMessages(@RequestParam("start") long start,
-                                        @RequestParam("count") long count){
+                                        @RequestParam("count") long count) {
         return messageService.getAllMessages();
     }
 
     @PostMapping
-    public Mono<Message> crateMessage(@RequestBody MessageData messageData){
+    public Mono<Message> crateMessage(@RequestBody MessageData messageData) {
         return messageService.createMessage(messageData);
+    }
+
+    @GetMapping(
+            path = "/test"
+    )
+    public ResponseEntity testMessage() {
+        return new ResponseEntity(new Message("testData"), HttpStatus.OK);
     }
 }
