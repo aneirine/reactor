@@ -1,5 +1,6 @@
 package com.aneirine.reactor.entities;
 
+import com.aneirine.reactor.entities.enums.Role;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sun.tools.javac.util.List;
 import lombok.Data;
@@ -21,11 +22,11 @@ public class User implements UserDetails {
 
     @JsonIgnore
     private String password;
-    private String role;
+    private Role role;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-         return List.of(new SimpleGrantedAuthority(role));
+         return List.of(new SimpleGrantedAuthority(role.name()));
     }
 
     @Override
