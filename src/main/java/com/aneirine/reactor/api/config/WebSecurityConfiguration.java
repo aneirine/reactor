@@ -13,7 +13,16 @@ public class WebSecurityConfiguration {
     @Bean
     public SecurityWebFilterChain securityWebFilterChain(ServerHttpSecurity serverHttpSecurity) {
         return serverHttpSecurity.csrf()
-                .disable().build();
+                .disable()
+                .formLogin()
+                .and()
+                .httpBasic().disable()
+                .authorizeExchange()
+                .pathMatchers("/", "/login", "/favicon.ico").permitAll()
+                .pathMatchers("/controller").hasRole("ADMIN")
+                .anyExchange()
+                .authenticated().and()
+                .build();
     }
 
 }
