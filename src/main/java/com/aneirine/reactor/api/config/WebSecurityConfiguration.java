@@ -12,8 +12,8 @@ import org.springframework.security.web.server.SecurityWebFilterChain;
 @EnableReactiveMethodSecurity
 public class WebSecurityConfiguration {
 
-    private  final AuthenticationManager authenticationManages;
-    private  final SecurityContextRepository securityContextRepository;
+    private final AuthenticationManager authenticationManages;
+    private final SecurityContextRepository securityContextRepository;
 
     public WebSecurityConfiguration(AuthenticationManager authenticationManages,
                                     SecurityContextRepository securityContextRepository) {
@@ -31,7 +31,7 @@ public class WebSecurityConfiguration {
         return serverHttpSecurity.csrf()
                 .disable()
                 .formLogin()
-               .authenticationManager(authenticationManages)
+                .authenticationManager(authenticationManages)
                 .securityContextRepository(securityContextRepository)
                 .and()
                 .httpBasic().disable()
