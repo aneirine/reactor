@@ -12,6 +12,15 @@ import org.springframework.security.web.server.SecurityWebFilterChain;
 @EnableReactiveMethodSecurity
 public class WebSecurityConfiguration {
 
+    private final AuthenticationManager authenticationManages;
+    private final SecurityContextRepository securityContextRepository;
+
+    public WebSecurityConfiguration(AuthenticationManager authenticationManages,
+                                    SecurityContextRepository securityContextRepository) {
+        this.authenticationManages = authenticationManages;
+        this.securityContextRepository = securityContextRepository;
+    }
+
     @Bean
     public PasswordEncoder passwordEncoder() {
         return NoOpPasswordEncoder.getInstance();
@@ -22,6 +31,8 @@ public class WebSecurityConfiguration {
         return serverHttpSecurity.csrf()
                 .disable()
                 .formLogin()
+                .authenticationManager(authenticationManages)
+                .securityContextRepository(securityContextRepository)
                 .and()
                 .httpBasic().disable()
                 .authorizeExchange()

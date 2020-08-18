@@ -18,8 +18,10 @@ public class UserController {
     }
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity getUser(){
+    public ResponseEntity getUser() {
         return new ResponseEntity(userService.findByUsername("admin"), HttpStatus.OK);
     }
 
+
 }
+
