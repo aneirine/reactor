@@ -12,10 +12,10 @@ import org.springframework.security.web.server.SecurityWebFilterChain;
 @EnableReactiveMethodSecurity
 public class WebSecurityConfiguration {
 
-    private  final AuthenticationManages authenticationManages;
+    private  final AuthenticationManager authenticationManages;
     private  final SecurityContextRepository securityContextRepository;
 
-    public WebSecurityConfiguration(AuthenticationManages authenticationManages, SecurityContextRepository securityContextRepository) {
+    public WebSecurityConfiguration(AuthenticationManager authenticationManages, SecurityContextRepository securityContextRepository) {
         this.authenticationManages = authenticationManages;
         this.securityContextRepository = securityContextRepository;
     }
