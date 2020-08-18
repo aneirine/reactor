@@ -10,7 +10,7 @@ import reactor.core.publisher.Mono;
 public class SecurityContextRepository implements ServerSecurityContextRepository {
     @Override
     public Mono<Void> save(ServerWebExchange serverWebExchange, SecurityContext securityContext) {
-        return null;
+        throw new IllegalStateException("SAVE METHOD NOT SUPPORTED");
     }
 
     @Override
