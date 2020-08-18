@@ -7,8 +7,19 @@ import reactor.core.publisher.Mono;
 
 @Component
 public class AuthenticationManager implements ReactiveAuthenticationManager {
+
+    private final JWTUtil jwtUtil;
+
+    public AuthenticationManager(JWTUtil jwtUtil) {
+        this.jwtUtil = jwtUtil;
+    }
+
     @Override
     public Mono<Authentication> authenticate(Authentication authentication) {
-        return null;
+       String authToken = authentication.getCredentials().toString();
+
+
+
+       return null;
     }
 }
