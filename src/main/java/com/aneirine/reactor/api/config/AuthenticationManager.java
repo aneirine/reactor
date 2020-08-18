@@ -16,11 +16,23 @@ public class AuthenticationManager implements ReactiveAuthenticationManager {
 
     @Override
     public Mono<Authentication> authenticate(Authentication authentication) {
-       String authToken = authentication.getCredentials().toString();
-       String username = jwtUtil.extractUsername(authToken);
+        String authToken = authentication.getCredentials().toString();
+
+        String username;
+
+        try {
+            username = jwtUtil.extractUsername(authToken);
+        } catch (Exception e) {
+            username = null;
+            e.printStackTrace();
+        }
+
+        if(username != null && jwtUtil.validateToken(authToken)){
+
+        } else return Mono.empty();
 
 
-       return null;
+        return null;
     }
 
 }
