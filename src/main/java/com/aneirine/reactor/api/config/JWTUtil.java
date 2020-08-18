@@ -20,7 +20,7 @@ public class JWTUtil {
 
     }
 
-    private Claims getClaimsFromToken(String authToken) {
+    public Claims getClaimsFromToken(String authToken) {
         String key = Base64.getEncoder().encodeToString(secret.getBytes());
         return Jwts.parserBuilder()
                 .setSigningKey(key)
